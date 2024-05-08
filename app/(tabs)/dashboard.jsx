@@ -9,9 +9,17 @@ const Dashboard = () => {
 
   const today = new Date().toLocaleDateString("en-US", {
     year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
+  const displayDate = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
     month: "long",
     day: "numeric",
   });
+
+  
 
   const weekday = new Date().toLocaleDateString("en-US", { weekday: "long" });
 
@@ -36,31 +44,29 @@ const Dashboard = () => {
     fetchEntries();
   }, [entries]);
 
-  const noEntries = entries.length < 1;
+  const noEntries = entries.length === 0;
 
   return (
     <SafeAreaView className="h-full bg-tiffany-300 ">
-      <View className="border-b-2 border-dark-blue-2 self-center">
-        <Text className="text-4xl font-pbold text-dark-blue-2 mt-20 text-center">
+      <View className="self-center border-b-2 border-dark-blue-2">
+        <Text className="mt-20 text-4xl text-center font-pbold text-dark-blue-2">
           {weekday}
         </Text>
-        <Text className="text-xl font-pbold text-dark-blue-2 mb-2 text-center">
-          {today}
+        <Text className="mb-2 text-xl text-center font-pbold text-dark-blue-2">
+          {displayDate}
         </Text>
       </View>
       <ScrollView>
         <View
-          className={`w-full ${
-            !noEntries ? "justify-center" : ""
-          } items-center min-h-[85vh] px-4`}
+          className='w-full items-center min-h-[85vh] px-4'
         >
-          <View className="flex-row justify-center flex-wrap pt-10 mb-10">
+          <View className="flex-row flex-wrap justify-center pt-10 mb-10">
             {!noEntries ? (
               entries.map((entry) => (
                 <CardComponent entry={entry} key={entry._id} />
               ))
             ) : (
-              <Text className="text-center text-4xl font-pbold text-dark-blue-2 mt-20">
+              <Text className="mt-20 text-4xl text-center font-pbold text-dark-blue-2">
                 No entries today
               </Text>
             )}

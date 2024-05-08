@@ -49,24 +49,24 @@ const CardComponent = ({ entry }) => {
         </View>
         <View className="flex w-6/12">
           <View className="flex-row ">
-            <Text className="font-pbold">Symptom: </Text>
-            <Text className="font-pregular ">{entry.symptom}</Text>
+            <Text className="font-pbold text-dark-blue-2">Symptom: </Text>
+            <Text className="font-pregular text-dark-blue-2 ">{entry.symptom}</Text>
           </View>
           <View className="flex-row">
-            <Text className="font-pbold">Trigger: </Text>
-            <Text className="font-pregular">{entry.trigger}</Text>
+            <Text className="font-pbold text-dark-blue-2">Trigger: </Text>
+            <Text className="font-pregular text-dark-blue-2">{entry.trigger}</Text>
           </View>
           <View className="flex-row">
-            <Text className="font-pbold">Time: </Text>
-            <Text className="font-pregular">{entry.time}</Text>
+            <Text className="font-pbold text-dark-blue-2">Time: </Text>
+            <Text className="font-pregular text-dark-blue-2">{entry.time}</Text>
           </View>
           <View className="flex-row">
-            <Text className="font-pbold">Severity: </Text>
-            <Text className="font-pregular">{entry.severity}</Text>
+            <Text className="font-pbold text-dark-blue-2">Severity: </Text>
+            <Text className="font-pregular text-dark-blue-2">{entry.severity}</Text>
           </View>
           <View className="flex-row w-full">
-            <Text className="font-pbold">Notes: </Text>
-            <Text className="w-5/6 break-all font-pregular">{entry.notes}</Text>
+            <Text className="font-pbold text-dark-blue-2">Notes: </Text>
+            <Text className="w-5/6 break-all font-pregular text-dark-blue-2">{entry.notes}</Text>
           </View>
         </View>
       </Card.Content>

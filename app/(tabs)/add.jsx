@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { SegmentedButtons } from 'react-native-paper'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
+import FormComponent from '../../components/FormComponent'
 
 const Add = () => {
   const submitForm = async () => {
@@ -85,7 +86,8 @@ const Add = () => {
   return (
     <SafeAreaView className="bg-tiffany-300 h-full">
       <ScrollView>
-        <View className='w-full justify-center min-h-[85vh] px-4 py-6 mt-4'>
+        <FormComponent form={form} setForm={setForm} submitForm={submitForm}/>
+        {/* <View className='w-full justify-center min-h-[85vh] px-4 py-6 mt-4'>
           <FormField 
             title="Symptom"
             value={form.symptom}
@@ -124,7 +126,7 @@ const Add = () => {
               title="Submit"
               handlePress={submitForm}
           />
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   )
