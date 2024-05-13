@@ -4,23 +4,23 @@ import FormField from './FormField'
 import CustomButton from './CustomButton'
 import React from "react";
 
-const FormComponent = ({form, setForm, submitForm}) => {
+const FormComponent = ({type, entry, form, setForm, submitForm}) => {
   return (
     <View className="w-full justify-center min-h-[85vh] px-4 py-6 mt-4">
       <FormField
         title="Symptom"
-        value={form.symptom}
+        value={type==='new' ? form.symptom : entry.symptom}
         placeholder="Enter symptom"
-        handleChangeText={(e) => setForm({ ...form, symptom: e })}
+        handleChangeText={(e) => setForm(prevForm => ({ ...prevForm, symptom: e }))}
       />
       <FormField
         title="Trigger"
-        value={form.trigger}
+        value={type==="new" ? form.trigger : entry.trigger}
         placeholder="Enter Trigger"
-        handleChangeText={(e) => setForm({ ...form, trigger: e })}
+        handleChangeText={(e) => setForm(prevForm => ({ ...prevForm, trigger: e }))}
         otherStyles={"my-6"}
       />
-      <Text className="text-base text-dark-blue-2 font-pmedium mb-2">
+      <Text className="mb-2 text-base text-dark-blue-2 font-pmedium">
         Severity
       </Text>
       <SegmentedButtons
@@ -33,7 +33,7 @@ const FormComponent = ({form, setForm, submitForm}) => {
             primary: "#283a53",
           },
         }}
-        value={form.severity}
+        value={type==="new" ? form.severity : entry.severity}
         onValueChange={(value) => setForm({ ...form, severity: value })}
         buttons={[
           { value: 1, label: "1" },
@@ -45,9 +45,9 @@ const FormComponent = ({form, setForm, submitForm}) => {
       />
       <FormField
         title="Notes"
-        value={form.notes}
+        value={type==="new" ? form.notes : entry.notes}
         placeholder="Enter Notes"
-        handleChangeText={(e) => setForm({ ...form, notes: e })}
+        handleChangeText={(e) => setForm(prevForm => ({ ...prevForm, notes: e }))}
         otherStyles={"mt-6 mb-20"}
         isNotes={true}
       />

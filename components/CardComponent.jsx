@@ -4,12 +4,13 @@ import icons from "../constants/icons";
 import DialogComponent from "./DialogComponent";
 import { useState } from "react";
 import { BACKEND_ENTRIES_FETCH } from "../constants/urls";
+import { useNavigation } from "expo-router";
 
 const CardComponent = ({ entry }) => {
   const [visible, setVisible] = useState(false);
   const showDialog = () => setVisible(true);
   const hideDialog = () => setVisible(false);
-
+const navigation = useNavigation()
   const deleteEntry = async () => {
     try {
       const res = await fetch(`${BACKEND_ENTRIES_FETCH}/${entry._id}`, {
@@ -36,7 +37,8 @@ const CardComponent = ({ entry }) => {
       <Card.Content className="flex-row break-word">
         <View className="absolute right-3 top-2">
           <TouchableOpacity onPress={showDialog}>
-            <Image source={icons.trash} className="w-6 h-6 blue-500" />
+            <Text className='font-pbold text-dark-blue-2 ml-auto'>Delete</Text>
+            {/* <Image source={icons.trash} className="w-6 h-6 blue-500" /> */}
             <DialogComponent
               visible={visible}
               hideDialog={hideDialog}
@@ -45,6 +47,9 @@ const CardComponent = ({ entry }) => {
               buttonText="Delete"
               mt="mt-2"
             />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('edit', {id: entry._id})}>
+            <Text className='font-pbold text-dark-blue-2 ml-auto'>Edit</Text>
           </TouchableOpacity>
         </View>
         <View className="flex w-6/12">

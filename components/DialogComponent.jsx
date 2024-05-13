@@ -8,7 +8,7 @@ const DialogComponent = ({ visible, hideDialog, handlePress, displayText, button
     <Portal>
       <Dialog visible={visible} onDismiss={hideDialog} style={{height: 150}}>
         <Dialog.Content >
-          <Text className={`font-psemi text-lg text-center ${mt}`}>
+          <Text className={`font-psemi text-lg text-dark-blue-2 text-center ${mt}`}>
             {displayText}
           </Text>
         </Dialog.Content>
